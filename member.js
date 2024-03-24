@@ -6,6 +6,8 @@ function skillsMember() {
 }
 
 
+import fs from 'fs';
+
 class Member {
     constructor(name, age) {
         this.name = name;
@@ -13,6 +15,10 @@ class Member {
     }
 
     executeSkills() {
-        console.log("Name: " + this.name + " Age: " + this.age);
+        const logMessage = "Name: " + this.name + " Age: " + this.age + "\n";
+        fs.appendFile('log.txt', logMessage, (err) => {
+            if (err) throw err;
+            console.log('The log was appended to file!');
+        });
     }
 }
